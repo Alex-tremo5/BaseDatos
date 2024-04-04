@@ -18,6 +18,18 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type = number] {
+  -moz-appearance: textfield;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,4 +51,23 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.registro {
+  border: solid 1px rgb(195, 195, 195);
+  border-radius: 5%;
+  margin: auto;
+  background-color: white;
+  padding: 30px;
+  width: 30rem;
+}
+
+.registro h2 {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#addButton {
+  width: 80%;
 }
