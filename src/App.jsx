@@ -3,12 +3,14 @@ import './App.css'
 import CollaboratorsList from './components/List'
 import FormCollaborator from './components/Form'
 import bdCollaborators from './bd/collaborators.json'
+import NavBar from './components/Browser'
 
 function App() {
   return (
     <>
-      <CollaboratorsList collaboratorsList = {bdCollaborators}/>
-      <FormCollaborator/>
+      <NavBar collaboratorsList = {bdCollaborators}/>
+      {/* <CollaboratorsList collaboratorsList = {bdCollaborators}/> */}
+      {/* <FormCollaborator/> */}
     </>
   )
 }

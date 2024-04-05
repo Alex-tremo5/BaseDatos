@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CollaboratorsList from '../bd/collaborators.json'
 
 function FormCollaborator(props) {
 
+    const [nameCollab, setNameCollab] = useState ("")
+    const [collabList, setCollabList] = useState ([CollaboratorsList])
+
+    const sendForm = (e) => {
+        e.preventDefault()
+        setCollabList([...collabList, nameCollab])
+        setNameCollab("")
+    }
+
+    const capturarInput = (e) => {
+        setNameCollab(e.target.value)
+ }
+
     return (
         <>
-        <form className='registro'>
+        <form className='registro' onSubmit = {sendForm}>
             <h2>Add collaborator</h2>
             <div className="mb-3">
-                
-                <input type="text" className="form-control" id="inputName" placeholder='Name'/>
+                <input type="text" className="form-control" id="inputName" placeholder='Name' onChange = {capturarInput}/>
             </div>
             <div className="mb-3">
                 <input type="email" className="form-control" id="inputEmail" placeholder='Email'/>

@@ -3,14 +3,15 @@ import Table from 'react-bootstrap/Table';
 const CollaboratorsList = ({ collaboratorsList }) => {
     console.log(collaboratorsList)
     return (
+        <>
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Edad</th>
-                    <th>Cargo</th>
-                    <th>Telefono</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Position</th>
+                    <th>Phone</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@ const CollaboratorsList = ({ collaboratorsList }) => {
                 ))}
             </tbody>
         </Table>
+        </>
     )
 }
 
