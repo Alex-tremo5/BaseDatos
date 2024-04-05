@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 3rem;
   text-align: center;
+  display: flex;
 }
 
 .logo {
@@ -53,13 +53,19 @@ input[type = number] {
   color: #888;
 }
 
+.container {
+  display: flex;
+justify-content: space-between;
+}
+
 .registro {
   border: solid 1px rgb(195, 195, 195);
   border-radius: 5%;
   margin: auto;
+  margin-right: 0;
   background-color: white;
   padding: 30px;
-  width: 30rem;
+  width: 445px;
 }
 
 .registro h2 {
@@ -70,4 +76,8 @@ input[type = number] {
 
 #addButton {
   width: 80%;
+}
+
+.tablita {
+  min-width: 800px;
 }

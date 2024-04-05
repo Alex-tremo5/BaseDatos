@@ -4,7 +4,7 @@ const CollaboratorsList = ({ collaboratorsList }) => {
     console.log(collaboratorsList)
     return (
         <>
-        <Table striped bordered hover>
+        <Table striped bordered hover className='tablita'>
             <thead>
                 <tr>
                     <th>Name</th>

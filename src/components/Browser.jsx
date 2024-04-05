@@ -21,10 +21,18 @@ const NavBar = ({ collaboratorsList }) => {
   );
 
   function searchList() {
-    console.log ('hola')
+    if (filteredCollab.length === 0) {
+      return (
+        <div>
+           <CollaboratorsList collaboratorsList = {filteredCollab}/> 
+          <h4>No collaborator found</h4>
+        </div>
+      )
+    } else {
   	return (
       <CollaboratorsList collaboratorsList = {filteredCollab}/> 
     )
+  }
 	  }  
 
 
@@ -34,7 +42,6 @@ return (
   <div className="container-fluid">
     <form className="d-flex" role="search">
       <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={searcher}/>
-      <button className="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
     </nav> 
