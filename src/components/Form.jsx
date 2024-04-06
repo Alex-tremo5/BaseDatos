@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import CollaboratorsList from '../bd/collaborators.json'
+import Alert from './Alert'
 
 function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
-    console.log(totalCollaborators)
+    // console.log(totalCollaborators)
 
     const [nombre, setName] = useState("")
     const [correo, setEmail] = useState("@colaborador.com")
     const [edad, setAge] = useState("")
     const [cargo, setPosition] = useState("")
-    const [telefono, setPhone] = useState("569")
+    const [telefono, setPhone] = useState("")
+
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const sendForm = (e) => {
         e.preventDefault()
@@ -26,6 +30,19 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
         setAge('');
         setPosition('');
         setPhone('');
+
+        if ( newCollaborator.correo === "@colaborador.com" || newCollaborator.correo === "" &&
+        newCollaborator.nombre === "" ||
+        newCollaborator.edad === "" ||
+        newCollaborator.cargo === "" ||
+        newCollaborator.telefono === ""
+) {
+        setError(true);
+        setSuccess(false);
+        return;
+    }
+        setError(false); 
+        setSuccess(true)
     }
 
     return (
@@ -99,6 +116,9 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                     type="submit"
                     className="btn btn-primary"
                     id='addButton'>Add</button>
+
+                    {error && <Alert isError={true} message="Debe completar todos los campos"/>}
+                    {success && <Alert isError={false} message="Registro exitoso"/> }
             </form>
         </>
     )
