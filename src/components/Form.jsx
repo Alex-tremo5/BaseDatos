@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import CollaboratorsList from '../bd/collaborators.json'
 import Alert from './Alert'
 
 function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
-    // console.log(totalCollaborators)
 
     const [nombre, setName] = useState("")
-    const [correo, setEmail] = useState("@colaborador.com")
+    const [correo, setEmail] = useState("")
     const [edad, setAge] = useState("")
     const [cargo, setPosition] = useState("")
     const [telefono, setPhone] = useState("")
@@ -16,6 +14,7 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
 
     const sendForm = (e) => {
         e.preventDefault()
+
         const newCollaborator = {
             id: (totalCollaborators + 1).toString(),
             nombre,
@@ -24,6 +23,17 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
             cargo,
             telefono
         };
+
+        if (newCollaborator.correo === "" ||
+            newCollaborator.nombre === "" ||
+            newCollaborator.edad === "" ||
+            newCollaborator.cargo === "" ||
+            newCollaborator.telefono === "") {
+            setError(true);
+            setSuccess(false);
+            return;
+        }
+
         addNewCollaborator(newCollaborator)
         setName('');
         setEmail('');
@@ -31,18 +41,8 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
         setPosition('');
         setPhone('');
 
-        if ( newCollaborator.correo === "@colaborador.com" || newCollaborator.correo === "" &&
-        newCollaborator.nombre === "" ||
-        newCollaborator.edad === "" ||
-        newCollaborator.cargo === "" ||
-        newCollaborator.telefono === ""
-) {
-        setError(true);
-        setSuccess(false);
-        return;
-    }
-        setError(false); 
-        setSuccess(true)
+        setError(false);
+        setSuccess(true);
     }
 
     return (
@@ -79,7 +79,7 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                         value={edad}
                         placeholder='Age'
                         onChange={(e) => setAge(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className="mb-3">
                     <input
@@ -87,9 +87,9 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                         className="form-control"
                         id="inputPosition"
                         value={cargo}
-                        placeholder='Position' 
+                        placeholder='Position'
                         onChange={(e) => setPosition(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className="mb-3">
                     <input
@@ -98,9 +98,9 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                         id="inputPhone"
                         value={telefono}
                         max={9999999999}
-                        placeholder='Phone number' 
+                        placeholder='Phone number'
                         onChange={(e) => setPhone(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className="mb-3 form-check">
                     <input
@@ -117,8 +117,8 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                     className="btn btn-primary"
                     id='addButton'>Add</button>
 
-                    {error && <Alert isError={true} message="Debe completar todos los campos"/>}
-                    {success && <Alert isError={false} message="Registro exitoso"/> }
+                {error && <Alert isError={true} message="Debe completar todos los campos" />}
+                {success && <Alert isError={false} message="Registro exitoso" />}
             </form>
         </>
     )
