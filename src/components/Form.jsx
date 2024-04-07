@@ -8,7 +8,7 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
     const [edad, setAge] = useState("")
     const [cargo, setPosition] = useState("")
     const [telefono, setPhone] = useState("")
-
+    const [isActive, setIsActive] = useState(false)
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
@@ -43,6 +43,10 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
 
         setError(false);
         setSuccess(true);
+    }
+
+    const handleCheck = (e) => {
+        setIsActive(e.target.checked);
     }
 
     return (
@@ -104,15 +108,17 @@ function FormCollaborator({ addNewCollaborator, totalCollaborators }) {
                 </div>
                 <div className="mb-3 form-check">
                     <input
+                        onChange={(e) => handleCheck(e)}
                         type="checkbox"
                         className="form-check-input"
                         id="exampleCheck1"
                     />
                     <label
                         className="form-check-label"
-                        for="exampleCheck1">Check me out</label>
+                        for="exampleCheck1">I read terms and conditions</label>
                 </div>
                 <button
+                    disabled={!isActive}
                     type="submit"
                     className="btn btn-primary"
                     id='addButton'>Add</button>
